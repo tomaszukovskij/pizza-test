@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/style.css" rel="stylesheet" />
+    <title>Pizza menu</title>
+  </head>
+  <body>
+    <header>
+      <h1>Pizza menu</h1>
+    </header>
+    <main>
+      <div id="container">
+        <section id="form-list">
+          <form>
+            <div class="form-group">
+              <label for=""
+                >Name* <span class="required">(required)</span></label
+              >
+              <input type="text" name="name" id="name" />
+            </div>
+            <div class="form-group">
+              <label for=""
+                >Price* <span class="required">(required)</span></label
+              >
+              <input type="number" name="price" id="price" />
+            </div>
+            <div class="form-group">
+              <label for=""
+                >Heat (1 - 3) <span class="optional">(optional)</span></label
+              >
+              <input type="number" name="heat" id="heat" />
+            </div>
+            <div class="form-group">
+              <label for=""
+                >Toppings* <span class="required">(required) </span
+                ><span class="optional">minimum 2</span></label
+              >
+              <div id="toppings">
+                <input type="text" name="toppings[]" />
+                <input type="text" name="toppings[]" />
+              </div>
+              <button type="button" id="addMoreToppings">
+                + Add one more topping
+              </button>
+            </div>
+            <div class="form-group">
+              <label for=""
+                >Photo <span class="optional">(optional)</span></label
+              >
+              <div class="form-group__fake-select">
+                <select name="photo" id="photo">
+                  <option value="none" selected>None</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn--primary">Submit</button>
+            </div>
+          </form>
+          <div id="list">
+            <div id="sort">
+              <label>Sorty by: </label>
+              <button type="button" class="btn btn--sort" id="sort-name">
+                Name
+              </button>
+              <button type="button" class="btn btn--sort" id="sort-price">
+                Price
+              </button>
+              <button type="button" class="btn btn--sort" id="sort-heat">
+                Heat
+              </button>
+            </div>
+            <div id="items-list"></div>
+          </div>
+        </section>
+        <section>
+          <diiv id="modal">
+            <div class="modal__content">
+              <p>Are you sure want to remove this item?</p>
+              <div class="modal__buttons">
+                <button class="btn btn--primary" id="yes">Yes</button>
+                <button class="btn btn--secondary" id="no">No</button>
+              </div>
+            </div>
+          </diiv>
+        </section>
+      </div>
+    </main>
+
+    <script src="storageCtrl.js"></script>
+    <script src="itemCtrl.js"></script>
+    <script src="uiCtrl.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
