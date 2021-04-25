@@ -122,12 +122,10 @@ const UICtrl = (function () {
       let error = `
         <p class="error">${msg}</p>
       `;
-
-      UISelectors.form.insertAdjacentHTML("beforeend", error);
-
-      setTimeout(() => {
-        document.querySelector(".error").remove();
-      }, 2000);
+      const errorEl = document.querySelector(".error");
+      if (!errorEl) {
+        UISelectors.form.insertAdjacentHTML("beforeend", error);
+      }
     },
 
     // Clear all fields UI

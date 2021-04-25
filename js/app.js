@@ -30,10 +30,6 @@ const App = (function (ItemCtrl, UICtrl, StorageCtrl) {
       UICtrl.addListItem(newItem);
       // Clear all input fields
       UICtrl.clearFields();
-      // This reload its a nasty cheat ..
-      // If you remove this line and remove few items from DOm,
-      // at the second event you will see an error. Couldn handle to fix it :/
-      location.reload();
     } else {
       UICtrl.showError("Please fill all required fields.");
     }
@@ -55,6 +51,7 @@ const App = (function (ItemCtrl, UICtrl, StorageCtrl) {
   };
 
   // Remove item if modal status true or false
+  // There is an error after removing second elemen. Couldn handle to fix it ;/
   const modalStatus = (event) => {
     const UISelectors = UICtrl.getSelectors();
     UISelectors.yesBtn.addEventListener("click", () => {
