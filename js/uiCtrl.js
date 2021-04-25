@@ -19,12 +19,15 @@ const UICtrl = (function () {
   };
 
   return {
+    // Populate UI with items from localstorage
     populateList: (items) => {
       UISelectors.itemList.innerHTML = "";
       items.forEach((item) => {
         UICtrl.addListItem(item);
       });
     },
+
+    // Get input values
     getInputValues: () => {
       const toppings = [];
       UISelectors.inputToppings.forEach((item) => {
@@ -39,6 +42,8 @@ const UICtrl = (function () {
         photo: UISelectors.inputPhoto.value,
       };
     },
+
+    // Add more toppings input to UI
     addMpreToppings: () => {
       const newInput = `
         <input type="text" name="toppings[]" />
@@ -46,15 +51,17 @@ const UICtrl = (function () {
 
       UISelectors.toppingsList.insertAdjacentHTML("beforeend", newInput);
     },
+
+    // Add new item to UI
     addListItem: (item) => {
       const photoId = item.photo;
       let photoEl = "",
         heatEl = "",
         heatNumber = item.heat;
       if (photoId !== "none") {
-        photoEl = `<img src="img/pizza${photoId}.jpg"/>`;
+        photoEl = `<img src="../img/pizza${photoId}.jpg"/>`;
       } else {
-        photoEl = `<img src="img/pizzaSlice.png"/>`;
+        photoEl = `<img src="../img/pizzaSlice.png"/>`;
       }
 
       if (heatNumber) {
@@ -87,17 +94,21 @@ const UICtrl = (function () {
       `;
 
       UISelectors.itemList.insertAdjacentHTML("beforeend", newItem);
-
-      console.log(item);
     },
+
+    // Remove item fromUI
     removeItem: (id) => {
       document.querySelector("[data-id='" + id + "']").remove();
     },
+
+    // Show modal on returned state
     showModal: (status) => {
       status
         ? UISelectors.modal.classList.add("show")
         : UISelectors.modal.classList.remove("show");
     },
+
+    // Hide/show item list from UI
     hideList: (status) => {
       if (status) {
         UISelectors.listSection.style.display = "none";
@@ -105,6 +116,8 @@ const UICtrl = (function () {
         UISelectors.listSection.style.display = "block";
       }
     },
+
+    // Display error msg
     showError: (msg) => {
       let error = `
         <p class="error">${msg}</p>
@@ -116,6 +129,8 @@ const UICtrl = (function () {
         document.querySelector(".error").remove();
       }, 2000);
     },
+
+    // Clear all fields UI
     clearFields() {
       UISelectors.inputName.value = "";
       UISelectors.inputPrice.value = "";
@@ -125,6 +140,8 @@ const UICtrl = (function () {
         item.value = "";
       });
     },
+
+    // Return all selectors to another location
     getSelectors: () => {
       return UISelectors;
     },

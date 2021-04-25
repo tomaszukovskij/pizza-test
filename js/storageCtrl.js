@@ -1,5 +1,6 @@
 const StorageCtrl = (function () {
   return {
+    // Get items from storage
     getItems: () => {
       let storage = [];
 
@@ -12,6 +13,7 @@ const StorageCtrl = (function () {
       return storage;
     },
 
+    // Store new items
     storeItem: (item) => {
       let storage = StorageCtrl.getItems();
 
@@ -19,10 +21,9 @@ const StorageCtrl = (function () {
       localStorage.setItem("pizza", JSON.stringify(storage));
     },
 
+    // Remove item from localstorage
     removeFromStore: (id) => {
       let storage = StorageCtrl.getItems();
-
-      console.log(id);
 
       storage = storage.filter((item) => item.id !== id);
 

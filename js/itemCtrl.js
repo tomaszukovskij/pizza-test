@@ -13,13 +13,9 @@ const ItemCtrl = (function () {
   };
 
   return {
+    // return newItem Obj
     addItem: (data) => {
-      let id;
-      if (state.items.length > 0) {
-        id = state.items.length;
-      } else {
-        id = 0;
-      }
+      const id = new Date().getTime();
 
       newItem = new Item(
         id,
@@ -33,10 +29,16 @@ const ItemCtrl = (function () {
       state.items.push(newItem);
       return newItem;
     },
+
+    // remove item from state
     removeItem: (id) => {
       let index = state.items.findIndex((element) => element.id === id);
 
       state.items.splice(index, 1);
+    },
+
+    getState() {
+      return state.items;
     },
 
     sortByName: () => {
