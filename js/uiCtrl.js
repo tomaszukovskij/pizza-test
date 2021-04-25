@@ -137,6 +137,11 @@ const UICtrl = (function () {
       UISelectors.inputToppings.forEach((item) => {
         item.value = "";
       });
+
+      const errorEl = document.querySelector(".error");
+      if (errorEl) {
+        errorEl.remove();
+      }
     },
 
     // Return all selectors to another location
